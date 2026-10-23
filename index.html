@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111214">
+  <meta name="description" content="GT SHOP KZ — демо-каталог автомобильных дисков, обвесов и аксессуаров.">
+  <title>GT SHOP KZ — parts for your style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="announcement"><span class="pulse"></span> GT SHOP KZ <span class="announcement-sep">/</span> ДЕТАЛИ, КОТОРЫЕ МЕНЯЮТ ХАРАКТЕР</div>
+  <header class="site-header">
+    <a class="brand" href="#/" aria-label="GT SHOP KZ — главная">
+      <span class="brand-mark">GT<span>+</span></span>
+      <span class="brand-copy"><b>GT SHOP</b><small>KAZAKHSTAN</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Главная навигация">
+      <a href="#/catalog">Каталог</a>
+      <a href="#/delivery">Доставка</a>
+      <a href="#/contacts">Контакты</a>
+    </nav>
+    <form id="search-form" class="header-search" role="search">
+      <span aria-hidden="true">⌕</span>
+      <input id="global-search" type="search" placeholder="Найти деталь..." aria-label="Найти товар">
+      <kbd>↵</kbd>
+    </form>
+    <div class="header-actions">
+      <a class="icon-link favorite-link" href="#/favorites" aria-label="Избранное" title="Избранное">♡<span id="favorite-count" class="tiny-count">0</span></a>
+      <a class="icon-link cart-link" href="#/cart" aria-label="Корзина" title="Корзина">▱<span id="cart-count" class="tiny-count">0</span></a>
+      <a class="account-link" href="#/profile" aria-label="Профиль">↗</a>
+    </div>
+  </header>
+  <nav class="mobile-nav" aria-label="Мобильная навигация">
+    <a href="#/">Главная</a><a href="#/catalog">Каталог</a><a href="#/favorites">Избранное</a><a href="#/cart">Корзина</a><a href="#/profile">Профиль</a>
+  </nav>
+  <main id="app" tabindex="-1">
+    <div class="loading-state">Загружаем каталог GT SHOP KZ…</div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-top">
+      <a class="brand footer-brand" href="#/"><span class="brand-mark">GT<span>+</span></span><span class="brand-copy"><b>GT SHOP</b><small>KAZAKHSTAN</small></span></a>
+      <p>Детали для тех, кто собирает автомобиль<br>не только из железа, но и из характера.</p>
+      <div class="footer-links"><a href="#/catalog">Каталог</a><a href="#/delivery">Доставка и оплата</a><a href="#/contacts">Связаться с нами</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> GT SHOP KZ · учебный демо-проект</span><span>Сделано с любовью к JDM-культуре <b>↗</b></span></div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
