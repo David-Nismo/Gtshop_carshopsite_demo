@@ -113,4 +113,4 @@ const report={source:ROOT,generatedAt:new Date().toISOString(),categoryCount:cat
 await fs.writeFile(REPORT,JSON.stringify(report,null,2)+"\n","utf8");
 console.log("Imported "+list.length+" unique products from "+cats.length+" category URLs ("+requestCount+" requests).");
 console.log("Wrote "+OUT+" and "+REPORT+".");
-if (!list.length) { console.error("No products found. Check network access, markup, robots.txt, and site terms."); process.exitCode=2; }
+if (!list.length) { console.error("Import stopped: JPM returned an empty HTML shell instead of public product cards from the runner. No products were invented. Use a store-provided CSV/XML/JSON export or an authorized product feed/API."); process.exitCode=2; }
