@@ -1,6 +1,9 @@
 name: Import JPM catalog
 
 on:
+  push:
+    paths:
+      - '.github/workflows/import-jpm-catalog.yml'
   workflow_dispatch:
     inputs:
       max_pages:
