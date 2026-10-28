@@ -71,3 +71,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 .product-image.image-missing{background:#e8e6e1}
 
 .detail-image .image-placeholder{position:relative;min-height:320px;width:100%;aspect-ratio:1/1;border-radius:14px}
+
+/* Partner catalog links */
+.source-catalogs{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:20px;padding:24px 26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+.source-catalogs>div:first-child{max-width:700px}
+.source-catalogs strong{display:block;margin:4px 0 6px;font-size:16px}
+.source-catalogs p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+.source-catalog-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;flex-shrink:0}
+@media(max-width:760px){.source-catalogs{align-items:flex-start;flex-direction:column;padding:20px}.source-catalog-links{width:100%;align-items:flex-start;flex-direction:column;gap:12px}}
