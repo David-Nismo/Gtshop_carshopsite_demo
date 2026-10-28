@@ -98,7 +98,7 @@ for (const cat of cats) {
   try {
    const html=await get(url); requestCount++;
    const rows=parseProducts(html,ROOT+cat);
-   if (!rows.length) break;
+   if (!rows.length) { if (page===1) console.log("No product links on "+url+"; HTML bytes="+html.length+"; sample="+html.slice(0,220).replace(/\s+/g," ")); break; }
    for (const p of rows) if (!products.has(p.sourceUrl)) products.set(p.sourceUrl,p);
   } catch(e) { errors.push({url,error:String(e)}); break; }
   await sleep(DELAY_MS);
