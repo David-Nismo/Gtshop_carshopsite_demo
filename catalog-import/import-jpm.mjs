@@ -25,7 +25,7 @@ function getCategories(html) {
   const u = new URL(dec(m[1]),ROOT);
   if (!u.pathname.includes("/product/") && !u.pathname.endsWith(".json")) out.add(u.pathname.replace(/\/+$/,""));
  }
- return [...out];
+ return [...out].filter(p => p !== "/collection/all");
 }
 function classify(url,title) {
  const s=(url+" "+title).toLowerCase();
