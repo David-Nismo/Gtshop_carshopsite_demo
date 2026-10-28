@@ -19,6 +19,23 @@ async function get(url) {
  if (!res.ok) throw new Error("HTTP "+res.status+" "+url);
  return res.text();
 }
+function robotsRules(text) {
+ const groups=[]; let group=null;
+ for (const raw of text.split(/\r?\n/)) {
+  const line=raw.replace(/#.*$/,"").trim(); if (!line || !line.includes(":")) continue;
+  const i=line.indexOf(":"); const key=line.slice(0,i).trim().toLowerCase(); const value=line.slice(i+1).trim();
+  if (key==="user-agent") {
+   if (!group || group.rules.length) { group={agents:[],rules:[]}; groups.push(group); }
+   group.agents.push(value.toLowerCase());
+  } else if ((key==="allow" || key==="disallow") && group && value) group.rules.push({type:key,path:value});
+ }
+ const selected=groups.filter(g=>g.agents.some(a=>a==="*" || "gtshopcatalogimporter".includes(a)));
+ return selected.flatMap(g=>g.rules);
+}
+function robotsAllows(pathname,rules) {
+ const matches=rules.filter(r=>pathname.startsWith(r.path)).sort((a,b)=>b.path.length-a.path.length);
+ return !matches.length || matches[0].type==="allow";
+}
 function getCategories(html) {
  const out = new Set(seeds);
  for (const m of html.matchAll(/href\s*=\s*["']([^"']*\/collection\/[^"'?#]+)["']/gi)) {
@@ -68,8 +85,10 @@ function parseProducts(html,catUrl) {
  }
  return [...found.values()];
 }
-const sitemap=await get(ROOT+"/page/sitemap").catch(()=> "");
-const cats=getCategories(sitemap);
+const robotsText=await get(ROOT+"/robots.txt");
+const rules=robotsRules(robotsText);
+const sitemap=await get(ROOT+"/page/sitemap");
+const cats=getCategories(sitemap).filter(cat=>robotsAllows(cat,rules));
 const products=new Map(), errors=[];
 let requestCount=0;
 for (const cat of cats) {
