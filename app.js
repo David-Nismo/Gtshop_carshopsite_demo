@@ -100,7 +100,8 @@ function icon(name,size=22){return '<svg class="ui-icon" width="'+size+'" height
       {title:'Салон и повседневные аксессуары',ids:['interior','accessories','offroad']},
       {title:'Модели и стиль',ids:['models','clothing']}
     ];
-    const countFor=id=>list.filter(p=>p.category===id).length;
+    const navProducts=products.filter(p=>(!q||(p.name+' '+p.short+' '+p.tags+' '+p.categoryLabel).toLowerCase().includes(q))&&(!onlyInStock||p.stock>0));
+    const countFor=id=>navProducts.filter(p=>p.category===id).length;
     const categoryNav=categories.filter(c=>countFor(c.id)>0).map(c=>'<a class="catalog-category-chip '+(currentCategory===c.id?'active':'')+'" href="#/catalog?category='+encodeURIComponent(c.id)+'"><span>'+escapeHtml(c.name)+'</span><b>'+countFor(c.id)+'</b></a>').join('');
     let productsHtml='';
     if(!list.length){
