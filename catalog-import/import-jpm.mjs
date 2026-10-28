@@ -85,7 +85,8 @@ function parseProducts(html,catUrl) {
  }
  return [...found.values()];
 }
-const robotsText=await get(ROOT+"/robots.txt");
+const robotsText=await get(ROOT+"/robots.txt").catch(e => { if (String(e).includes("HTTP 404")) return ""; throw e; });
+if (!robotsText) console.warn("No robots.txt published at the site root; using a conservative request rate and only public catalog pages.");
 const rules=robotsRules(robotsText);
 const sitemap=await get(ROOT+"/page/sitemap");
 const cats=getCategories(sitemap).filter(cat=>robotsAllows(cat,rules));
