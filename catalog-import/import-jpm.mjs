@@ -6,7 +6,7 @@ const ROOT = "https://jpm.kz";
 const OUT = path.resolve("catalog-import/jpm-products.js");
 const REPORT = path.resolve("catalog-import/import-report.json");
 const DELAY_MS = Number(process.env.JPM_DELAY_MS || 500);
-const MAX_PAGES = Number(process.env.JPM_MAX_PAGES || 100);
+const MAX_PAGES = Number(process.env.JPM_MAX_PAGES || 30);
 const UA = "GTShopCatalogImporter/1.0 (respectful catalog maintenance)";
 const seeds = ["/collection/all","/collection/sbornye-modeli","/collection/odezhda-atributika","/collection/aksessuary","/collection/diski","/collection/interer","/collection/dvigatel","/collection/podveska","/collection/tormoznaya-sistema","/collection/transmissiya","/collection/eksterer","/collection/elektronika","/collection/4x4","/collection/silikonovye-patrubki-shlangi-homuty","/collection/bampery-spoylery-kapoty-obvesy"];
 const sleep = ms => new Promise(r => setTimeout(r,ms));
@@ -99,7 +99,9 @@ for (const cat of cats) {
    const html=await get(url); requestCount++;
    const rows=parseProducts(html,ROOT+cat);
    if (!rows.length) { if (page===1) console.log("No product links on "+url+"; HTML bytes="+html.length+"; sample="+html.slice(0,220).replace(/\s+/g," ")); break; }
-   for (const p of rows) if (!products.has(p.sourceUrl)) products.set(p.sourceUrl,p);
+   const fresh=rows.filter(p=>!products.has(p.sourceUrl));
+   if (!fresh.length) { console.log("Stopping repeated page for "+cat+" at page "+page); break; }
+   for (const p of fresh) products.set(p.sourceUrl,p);
   } catch(e) { errors.push({url,error:String(e)}); break; }
   await sleep(DELAY_MS);
  }
