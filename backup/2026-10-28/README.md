@@ -1,7 +1,12 @@
 # GT SHOP KZ backup — 2026-10-28
 
-Snapshot taken before the expanded catalog import.
+Полный снимок состояния сайта до расширения каталога.
 
-Included: `app.js`, `index.html`, and `styles.css` as they existed before catalog expansion. The existing `assets/` directory is unchanged and remains available in the repository root; this backup references the same assets rather than duplicating binary files.
+Включено:
+- `app.js`
+- `index.html`
+- `styles.css`
+- `assets/` — копия исходных изображений сайта
 
-Restore by copying these three files to the repository root. This snapshot does not include the browser's localStorage/cart/favorites data.
+## Восстановление
+Скопируй эти три файла и папку `assets/` в корень репозитория, заменив текущие файлы. Эта копия не содержит данные корзины и избранного, сохранённые в браузере (localStorage).
