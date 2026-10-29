@@ -11,6 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="catalog-import/jpm-products.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" defer></script>
+  <script src="firebase-config.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -25,6 +29,7 @@
       <a href="#/delivery">Доставка</a>
       <a href="#/contacts">Контакты</a>
       <a href="#/favorites">Избранное</a>
+      <a href="#/garage">Твой гараж</a>
     </nav>
     <form id="search-form" class="header-search" role="search">
       <span aria-hidden="true"><svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></span>
@@ -38,7 +43,7 @@
     </div>
   </header>
   <nav class="mobile-nav" aria-label="Мобильная навигация">
-    <a href="#/">Главная</a><a href="#/catalog">Каталог</a><a href="#/delivery">Доставка</a><a href="#/favorites">Избранное</a><a href="#/cart">Корзина</a><a href="#/profile">Профиль</a>
+    <a href="#/">Главная</a><a href="#/catalog">Каталог</a><a href="#/delivery">Доставка</a><a href="#/favorites">Избранное</a><a href="#/cart">Корзина</a><a href="#/garage">Гараж</a><a href="#/profile">Профиль</a>
   </nav>
   <main id="app" tabindex="-1">
     <div class="loading-state">Загружаем каталог GT SHOP KZ…</div>
