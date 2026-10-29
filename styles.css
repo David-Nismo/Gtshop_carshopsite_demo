@@ -147,3 +147,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:560px){.garage-builder-head,.garage-current,.garage-visual-top,.garage-fitment-bar,.garage-profile-entry{align-items:flex-start;flex-direction:column}.garage-form{grid-template-columns:1fr}.garage-form .btn{grid-column:auto}.garage-stage{min-height:190px}.garage-part-card{grid-template-columns:90px minmax(0,1fr);padding:9px;gap:10px}.garage-part-image{height:95px}.garage-profile-entry .btn{width:100%}.garage-fitment-bar .btn{width:100%}}
 
 .auth-form{margin:18px 0 24px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}.auth-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+
+.vehicle-filter{display:grid;gap:10px}.vehicle-filter>.form-field{display:grid;gap:5px}.vehicle-filter>.form-field span{font-size:11px;color:var(--muted)}.vehicle-filter select{width:100%;min-width:0;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:10px;font-size:12px}.vehicle-filter .text-link{display:inline-block;margin-top:2px}
