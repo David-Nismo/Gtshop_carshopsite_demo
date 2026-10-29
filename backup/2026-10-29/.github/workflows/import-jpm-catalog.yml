@@ -1,0 +1,45 @@
+name: Import JPM catalog
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: "Maximum pages per category (test with 2 first)"
+        required: true
+        default: "100"
+      delay_ms:
+        description: "Delay between requests in milliseconds"
+        required: true
+        default: "700"
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Import catalog
+        env:
+          JPM_MAX_PAGES: ${{ inputs.max_pages }}
+          JPM_DELAY_MS: ${{ inputs.delay_ms }}
+        run: node catalog-import/import-jpm.mjs
+      - name: Commit imported data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog-import/jpm-products.js catalog-import/import-report.json
+          if git diff --cached --quiet; then
+            echo "No catalog changes detected."
+          else
+            git commit -m "Import latest JPM catalog snapshot"
+            git push
+          fi
