@@ -145,3 +145,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 .garage-profile-entry .btn{flex-shrink:0}
 @media(max-width:850px){.garage-form{grid-template-columns:1fr 1fr}.garage-form .btn{grid-column:1/-1}.garage-parts-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.garage-builder-head,.garage-current,.garage-visual-top,.garage-fitment-bar,.garage-profile-entry{align-items:flex-start;flex-direction:column}.garage-form{grid-template-columns:1fr}.garage-form .btn{grid-column:auto}.garage-stage{min-height:190px}.garage-part-card{grid-template-columns:90px minmax(0,1fr);padding:9px;gap:10px}.garage-part-image{height:95px}.garage-profile-entry .btn{width:100%}.garage-fitment-bar .btn{width:100%}}
+
+.auth-form{margin:18px 0 24px;padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}.auth-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
