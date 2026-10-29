@@ -174,7 +174,7 @@ function icon(name,size=22){return '<svg class="ui-icon" width="'+size+'" height
     if(!v)return {status:'Выбери автомобиль',ok:false};
     const text=(p.name+' '+p.short+' '+p.description+' '+p.tags+' '+(p.specs||[]).map(s=>s.join(' ')).join(' ')).toLowerCase();
     const make=v.make.toLowerCase(), model=v.model.toLowerCase();
-    const aliases=[model,model.replace(/\s*\\/\s*/g,' '),model.split(' / ')[0],model.split(' ')[0]].filter(x=>x.length>2);
+    const aliases=[model,model.replace(' / ',' '),model.split(' / ')[0],model.split(' ')[0]].filter(x=>x.length>2);
     const makeHit=text.includes(make), modelHit=aliases.some(a=>text.includes(a));
     const years=[...text.matchAll(/(?:19|20)\d{2}/g)].map(m=>Number(m[0]));
     const yearOk=years.length<2||(v.year>=Math.min(...years)&&v.year<=Math.max(...years));
